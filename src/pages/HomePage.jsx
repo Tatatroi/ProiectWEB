@@ -1,4 +1,3 @@
-import React from "react";
 import CityCarousel from "../components/CityCarousel";
 import QuoteBox from "../components/QuoteBox";
 

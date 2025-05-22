@@ -1,0 +1,74 @@
+.screen {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: 
+    linear-gradient(rgba(33,150,243, 0.5), rgba(33,150,243, 0.6)),
+    url('C:/Users/srefa/ProiectWeb/src/assets/img3Ocean.jpg') center/cover no-repeat;
+  backdrop-filter: blur(5px);
+  padding-top: 60px; /* dacă vrei să compensezi pentru navbar */
+}
+html, body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+.box-signup {
+  min-width: 320px;
+  max-width: 90vw;
+  width: 500px;
+  /* FARA height! */
+  padding: 40px 32px;
+  border-radius: 30px;
+  background: rgba(255,255,255,0.85);
+  box-shadow: 0 8px 24px rgba(33,150,243,0.08);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1.5px solid #2196F3; /* bordură albastră vibrantă */
+
+}
+
+
+.text-box{
+    margin-top: 25px;
+    border-radius: 10px;
+    border-width: 3px;
+    width: 400px;
+    height: 50px;
+    
+}
+
+.text-box:focus{
+    outline: none;
+    border: 2px solid #775DC6 ;
+    background-color: #e9f7fd;   /* Fundal mai deschis */
+    transition: all 0.2s; 
+}
+
+.button-signup {
+  margin-top:25px;
+  padding: 12px 28px;
+  background: #2196F3;
+  color: #fff;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  box-shadow: 0 3px 12px rgba(33, 150, 243, 0.1);
+  transition: background 0.2s, box-shadow 0.2s, transform 0.15s;
+}
+
+.button-signup:hover {
+  background: #1565C0;                      /* un albastru mai închis la hover */
+  box-shadow: 0 6px 20px rgba(21,101,192,0.18);
+  transform: translateY(-2px) scale(1.04);   /* puțin ridicat și mărit */
+}
+
+.buton-link > a{
+    margin-left: 30px;
+}
