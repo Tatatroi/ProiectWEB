@@ -1,74 +1,117 @@
 .screen {
+  min-height: 100vh;
   width: 100vw;
-  height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: 
-    linear-gradient(rgba(33,150,243, 0.5), rgba(33,150,243, 0.6)),
-    url('C:/Users/srefa/ProiectWeb/src/assets/img3Ocean.jpg') center/cover no-repeat;
-  backdrop-filter: blur(5px);
-  padding-top: 60px; /* dacă vrei să compensezi pentru navbar */
+  /* Background: glassmorphism with ocean image */
+  background:
+    linear-gradient(120deg, rgba(33,150,243,0.4) 38%, rgba(33,150,243,0.1) 100%),
+    url('C:/Users/mihai/VSCodeProjects/ProiectWEB/src/assets/img3Ocean.jpg') center/cover no-repeat;
+  backdrop-filter: blur(6px) saturate(120%);
+  -webkit-backdrop-filter: blur(6px) saturate(120%);
+  padding-top: 64px;
 }
+
 html, body {
   margin: 0;
   padding: 0;
   overflow-x: hidden;
+  font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+  background: #f4fafe;
 }
 
 .box-signup {
   min-width: 320px;
   max-width: 90vw;
-  width: 500px;
-  /* FARA height! */
-  padding: 40px 32px;
-  border-radius: 30px;
-  background: rgba(255,255,255,0.85);
-  box-shadow: 0 8px 24px rgba(33,150,243,0.08);
+  width: 400px;
+  padding: 40px 32px 32px;
+  border-radius: 28px;
+  background: rgba(255,255,255,0.91);
+  box-shadow: 0 12px 48px rgba(30, 100, 190, 0.11), 0 2px 8px rgba(21,101,192,0.08);
   display: flex;
   flex-direction: column;
   align-items: center;
-  border: 1.5px solid #2196F3; /* bordură albastră vibrantă */
-
+  border: 2px solid #e3f2fd;  /* very gentle blue border */
+  /* glass effect */
+  backdrop-filter: blur(15px) saturate(160%);
+  -webkit-backdrop-filter: blur(15px) saturate(160%);
+  transition: box-shadow 0.2s;
 }
 
+.box-signup:hover {
+  box-shadow: 0 20px 60px 0 rgba(30, 100, 190, 0.15), 0 4px 16px rgba(21,101,192,0.10);
+}
+
+.title-signup {
+  margin-bottom: 18px;
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: #1565C0;
+  letter-spacing: 1px;
+}
 
 .text-box{
-    margin-top: 25px;
-    border-radius: 10px;
-    border-width: 3px;
-    width: 400px;
-    height: 50px;
-    
+  margin-top: 22px;
+  border-radius: 10px;
+  border: 2px solid #e3f2fd;
+  width: 100%;
+  min-width: 0;
+  height: 48px;
+  font-size: 1rem;
+  padding: 0 14px;
+  box-shadow: 0 2px 12px rgba(33,150,243,0.03);
+  transition: border-color 0.19s, background 0.22s;
+  background: rgba(240, 249, 255, 0.35);
+  outline: none;
+}
+.text-box:focus{
+  border: 2.5px solid #775DC6;
+  background: #e6f2fd;
 }
 
-.text-box:focus{
-    outline: none;
-    border: 2px solid #775DC6 ;
-    background-color: #e9f7fd;   /* Fundal mai deschis */
-    transition: all 0.2s; 
+.input-error {
+  border-color: #e57373!important;
+  background: #fff4f3;
+}
+
+.error-message {
+  color: #e53935;
+  font-size: .95rem;
+  margin: 5px 0 0 2px;
+  font-weight: 500;
+  align-self: flex-start;
 }
 
 .button-signup {
-  margin-top:25px;
-  padding: 12px 28px;
-  background: #2196F3;
+  margin-top: 30px;
+  padding: 14px 0;
+  width: 100%;
+  background: linear-gradient(90deg, #2196F3 50%, #1565C0 98%);
   color: #fff;
-  font-weight: 600;
+  font-weight: 700;
   border: none;
-  border-radius: 8px;
-  font-size: 1rem;
+  border-radius: 9px;
+  font-size: 1.08rem;
   cursor: pointer;
-  box-shadow: 0 3px 12px rgba(33, 150, 243, 0.1);
-  transition: background 0.2s, box-shadow 0.2s, transform 0.15s;
+  letter-spacing: 1px;
+  box-shadow: 0 3px 18px 0 rgba(33, 150, 243, 0.13);
+  transition: background 0.18s, box-shadow 0.14s, transform 0.13s;
 }
-
 .button-signup:hover {
-  background: #1565C0;                      /* un albastru mai închis la hover */
-  box-shadow: 0 6px 20px rgba(21,101,192,0.18);
-  transform: translateY(-2px) scale(1.04);   /* puțin ridicat și mărit */
+  background:linear-gradient(90deg, #1565C0 20%, #2196F3 97%);
+  box-shadow: 0 6px 28px 0 rgba(21,101,192,0.15);
+  transform: translateY(-2px) scale(1.028);
+}
+.buton-link > a{
+    margin-left: 32px;
+    text-decoration: none;
+    color: #1976D2;
+    font-weight: 500;
+    font-size: 1.07rem;
+    transition: color 0.14s;
 }
 
-.buton-link > a{
-    margin-left: 30px;
+.buton-link > a:hover{
+    color: #775DC6;
 }
