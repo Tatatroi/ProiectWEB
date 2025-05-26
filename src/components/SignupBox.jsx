@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
 export default function SignUpBox({ onSignUp }) {
-  const [form, setForm] = useState({ email: '', password: '', confirm: '' });
+  const [form, setForm] = useState({ firstName: '', lastName: '', email: '', password: '', confirm: '' });
   const [touched, setTouched] = useState({});
   const [errors, setErrors] = useState({});
   const [submitting, setSubmitting] = useState(false);
@@ -29,10 +29,16 @@ export default function SignUpBox({ onSignUp }) {
     e.preventDefault();
     const errs = validate();
     setErrors(errs);
-    setTouched({ email: true, password: true, confirm: true });
+    setTouched({ firstName:true, lastName:true, email: true, password: true, confirm: true });
     if (Object.keys(errs).length === 0) {
       setSubmitting(true);
-      await onSignUp(form.email, form.password);
+
+      // console.log(form.firstName)
+      // console.log(form.lastName)
+      // console.log(form.email)
+      // console.log(form.password)
+
+      await onSignUp(form.firstName, form.lastName, form.email, form.password);
       setSubmitting(false);
     }
   }
@@ -42,9 +48,9 @@ export default function SignUpBox({ onSignUp }) {
       <div className="title-signup">Sign up</div>
       <form onSubmit={handleSubmit} style={{width: '104%'}}>
         <input
-          name="first-name"
+          name="firstName"
           className={`text-box${errors.firstName && touched.firstName ? " input-error" : ""}`}
-          type="first-name"
+          type="text"
           placeholder="First Name"
           value={form.firstName}
           onChange={handleChange}
@@ -54,9 +60,9 @@ export default function SignUpBox({ onSignUp }) {
           <div className="error-message">{errors.firstName}</div>
         )}
         <input
-          name="last-name"
+          name="lastName"
           className={`text-box${errors.lastName && touched.lastName ? " input-error" : ""}`}
-          type="last-name"
+          type="text"
           placeholder="Last Name"
           value={form.lastName}
           onChange={handleChange}

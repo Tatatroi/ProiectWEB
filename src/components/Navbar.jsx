@@ -1,15 +1,46 @@
-import { useNavigate } from "react-router-dom";
-import { Link } from "react-router-dom"
-export default function Navbar() {
+import { Link, useNavigate } from "react-router-dom";
+
+export default function Navbar({ loggedIn, onLogout }) {
   const navigate = useNavigate();
+
   return (
-    
-    <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
+    <nav className="navbar navbar-expand-lg navbar-dark bg-primary shadow">
       <div className="container-fluid">
-        <Link to='/' className="navbar-brand fw-bold">TripPlanner</Link>
-        <div className="d-flex">
-          <button onClick={() => navigate("/signin")} className="btn btn-outline-light me-2">Sign In</button>
-          <button onClick={() => navigate("/signup")} className="btn btn-light text-primary">Sign Up</button>
+        <Link className="navbar-brand fw-bold" to="/">
+          TripPlanner
+        </Link>
+        <div className="d-flex align-items-center">
+          {loggedIn ? (
+            <>
+              <button
+                className="btn btn-outline-light me-3"
+                onClick={() => navigate("/mytrips")}
+              >
+                My Trips
+              </button>
+              <button
+                className="btn btn-light text-primary fw-bold"
+                onClick={onLogout}
+              >
+                Log Out
+              </button>
+            </>
+          ) : (
+            <>
+              <Link
+                to="/login"
+                className="btn btn-outline-light me-2"
+              >
+                Log In
+              </Link>
+              <Link
+                to="/signup"
+                className="btn btn-light text-primary fw-bold"
+              >
+                Sign Up
+              </Link>
+            </>
+          )}
         </div>
       </div>
     </nav>

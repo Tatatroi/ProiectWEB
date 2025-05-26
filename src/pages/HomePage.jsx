@@ -1,7 +1,10 @@
 import CityCarousel from "../components/CityCarousel";
 import QuoteBox from "../components/QuoteBox";
+import { useNavigate } from "react-router-dom";
 
-export default function HomePage() {
+export default function HomePage({ loggedIn }) {
+  const navigate = useNavigate();
+
   return (
     <div className="container py-5">
       <h1 className="display-3 fw-bold text-primary my-4 text-center">TripPlanner</h1>
@@ -13,6 +16,16 @@ export default function HomePage() {
           <QuoteBox />
         </div>
       </div>
+      {loggedIn && (
+        <div className="text-center mt-5">
+          <button
+            className="btn btn-lg btn-success px-4 py-3 fw-bold shadow"
+            onClick={() => navigate("/mytrips")}
+          >
+            ➕ Go to My Trips
+          </button>
+        </div>
+      )}
     </div>
   );
 }

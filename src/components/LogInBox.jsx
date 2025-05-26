@@ -31,7 +31,7 @@ export default function LogIn({ onLogIn }) {
     const errs = validate();
     setErrors(errs);
     setTouched({ email: true, password: true });
-    if (Object.keys(errs).length === 0 && onSignIn) {
+    if (Object.keys(errs).length === 0 && onLogIn) {
       setSubmitting(true);
       await onLogIn(form.email, form.password);
       setSubmitting(false);
