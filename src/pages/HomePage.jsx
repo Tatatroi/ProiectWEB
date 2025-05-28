@@ -22,7 +22,7 @@ export default function HomePage({ loggedIn }) {
             className="btn btn-lg btn-success px-4 py-3 fw-bold shadow"
             onClick={() => navigate("/mytrips")}
           >
-            ➕ Go to My Trips
+            🌍 Go to My Trips
           </button>
         </div>
       )}

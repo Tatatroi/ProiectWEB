@@ -1,4 +1,3 @@
-// src/components/TripDetailModal.jsx
 import { useState } from "react";
 import "../css/TripDetailModal.css"; // We'll simplify this CSS too
 
@@ -30,21 +29,41 @@ export default function TripDetailModal({ trip, onClose, onUpdate }) {
   // Select background image based on destination type
   const getBgImage = () => {
     const dest = trip.destination.toLowerCase();
-    if (dest.includes("beach") || dest.includes("resort") || dest.includes("ocean")) 
+    if (dest.includes("beach") || dest.includes("resort") || dest.includes("ocean") || dest.includes("sea")) 
       return "url('/src/assets/img3Ocean.jpg')";
     if (dest.includes("mountain") || dest.includes("hiking")) 
       return "url('/src/assets/img1Natura.jpg')";
     if (dest.includes("desert")) 
       return "url('/src/assets/img2Desert.jpg')";
-    return "url('/src/assets/img4Coral.jpg')";
+    return "url('/src/assets/defaultTravel.jpg')";
   };
+
+// useEffect(() => {
+//   const fetchTrip = async () => {
+//     const response = await axios.get(`http://localhost:4000/api/trips`);
+//     setTrip(response.data);
+//   };
+
+//   fetchTrip();
+// }, []);
+
+
+//   const getBgImageFromAPI = async (trip) => {
+//   try {
+//     const response = await axios.get(`http://localhost:4000/api/city-image?city=${trip.destination}`);
+//     return `url(${response.data.imageUrl})`;
+//   } catch (err) {
+//     return "url('/src/assets/img4Coral.jpg')"; // fallback
+//   }
+// };
 
   return (
     <div className="trip-modal-overlay" onClick={onClose}>
       <div className="trip-modal-content" onClick={e => e.stopPropagation()}>
-        <button className="trip-modal-close" onClick={onClose}>×</button>
+        {/* <button className="trip-modal-close" onClick={onClose}>×</button> */}
         
         <div className="trip-modal-header" style={{ backgroundImage: getBgImage() }}>
+          <button className="trip-modal-close" onClick={onClose}>×</button>
           <div className="trip-header-content">
             <h2>{trip.destination}</h2>
             <p>{trip.date}</p>

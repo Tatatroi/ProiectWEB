@@ -2,6 +2,7 @@ const express = require("express");
 const cors = require("cors");
 const { Pool } = require("pg");
 const { use } = require("react");
+const axios = require('axios');
 
 const app = express();
 app.use(cors());
@@ -34,23 +35,7 @@ app.post("/api/users", async (req, res) => {
   }
 });
 
-// GET endpoint pentru a obține toate călătoriile cu informații despre utilizatori
-app.get("/api/trips", async (req, res) => {
-  try {
-    const result = await pool.query(
-      `SELECT t.id, t.destination, t.date, t.description, 
-              t.user_id, u.first_name, u.last_name, u.email
-       FROM trips t
-       INNER JOIN users u ON t.user_id = u.id
-       ORDER BY t.date DESC`
-    );
-
-    res.status(200).json(result.rows);
-  } catch (err) {
-    console.error("Eroare la obținerea călătoriilor:", err);
-    res.status(500).json({ mes: "Eroare internă de server" });
-  }
-});
+// GET TRIPS FOR USER
 
 app.get("/api/users", async (req, res) => {
   const { email, password } = req.query;
@@ -110,7 +95,7 @@ app.get("/api/users/:id", async (req, res) => {
 
   try {
     const result = await pool.query(
-      "SELECT id, destination, date, description FROM trips WHERE user_id = $1",
+      "SELECT id, destination, date, budget, transportation, accommodation, notes, description FROM trips WHERE user_id = $1",
       [id]
     );
 
@@ -246,20 +231,17 @@ app.delete("/api/trips/:id", async (req, res) => {
   }
 });
 
-// Pornire server backend
-app.listen(4000, () => {
-  console.log("Backend Express rulează pe portul 4000");
-});
+
 
 // LOG IN API
 
 app.post("/api/login", async (req, res) => {
   const { email, password } = req.body;
-  console.log(req.body)
+  console.log(req.body);
 
   try {
     const result = await pool.query(
-      "SELECT id, mail FROM users WHERE mail = $1 AND parola = $2",
+      "SELECT id, mail, nume, prenume FROM users WHERE mail = $1 AND parola = $2",
       [email, password]
     );
 
@@ -270,11 +252,20 @@ app.post("/api/login", async (req, res) => {
     res.status(200).json({
       user: {
         id: result.rows[0].id,
-        email: result.rows[0].mail
+        email: result.rows[0].mail,
+        firstName: result.rows[0].nume,
+        lastName: result.rows[0].prenume
       },
     });
   } catch (err) {
     console.error(err);
     res.status(500).json({ mes: "Eroare server" });
   }
+});
+
+
+
+// Pornire server backend
+app.listen(4000, () => {
+  console.log("Backend Express rulează pe portul 4000");
 });

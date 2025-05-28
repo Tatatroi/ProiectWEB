@@ -27,7 +27,12 @@ export default function LogIn({ setUser, setLoggedIn }) {
         ...data.user,
         isAuthenticated: true
       };
+
+
       localStorage.setItem('user', JSON.stringify(fullUser));
+
+      console.log("Aici e userul meuuuuuuuuuuu", fullUser)
+
 
       // 👇 Actualizezi state-ul din App.jsx
       setUser(fullUser);
@@ -40,8 +45,6 @@ export default function LogIn({ setUser, setLoggedIn }) {
   };
 
   return (
-    <div className="screen">
-      <LogInBox onLogIn={handleLogIn} />
-    </div>
+    <LogInBox onLogIn={handleLogIn} />
   );
 }
