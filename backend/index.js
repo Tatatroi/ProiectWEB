@@ -13,7 +13,7 @@ const pool = new Pool({
   user: "postgres", // ex: postgres
   host: "localhost",
   database: "TripPlanner", // ex: proiectweb
-  password: "1234", // parola de la PostgreSQL
+  password: "password", // parola de la PostgreSQL
   port: 5432, // portul standard PostgreSQL
 });
 
