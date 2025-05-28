@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import TripDetailModal from "../components/TripDetailModal";
 import AddTripModal from "../components/AddTripModal";
+import { API_URL } from '../config/api'; 
 
 export default function MyTrips({ user }) {
   const [trips, setTrips] = useState([]);
@@ -27,7 +28,7 @@ export default function MyTrips({ user }) {
     
     try {
       // Endpoint pentru a prelua călătoriile utilizatorului curent
-      const response = await fetch(`http://localhost:4000/api/users/${user.id}`, {
+      const response = await fetch(`${API_URL}/api/users/${user.id}`, {
         method: 'GET',
         headers: {
           'Accept': 'application/json',
@@ -68,7 +69,7 @@ const handleUpdateTrip = async (updatedTrip) => {
   };
 
   try {
-    const response = await fetch(`http://localhost:4000/api/trips/${updatedTrip.id}`, {
+    const response = await fetch(`${API_URL}/api/trips/${updatedTrip.id}`, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(formattedTrip)
@@ -99,7 +100,7 @@ const handleAddTrip = async (newTrip) => {
   };
 
   try {
-    const response = await fetch('http://localhost:4000/api/trips', {
+    const response = await fetch(`${API_URL}/api/trips`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(formattedTrip)
@@ -122,7 +123,7 @@ const handleDeleteTrip = async (tripId) => {
   if (!window.confirm("Are you sure you want to delete this trip?")) return;
 
   try {
-    const response = await fetch(`http://localhost:4000/api/trips/${tripId}`, {
+    const response = await fetch(`${process.env.REACT_APP_API_URL}/api/trips/${tripId}`, {
       method: 'DELETE'
     });
 

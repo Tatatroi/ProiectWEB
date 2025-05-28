@@ -1,13 +1,14 @@
 import "../css/SignUp.css";
 import LogInBox from "../components/LogInBox";
 import { useNavigate } from 'react-router-dom'; // Pentru redirectare
+import { API_URL } from '../config/api'; 
 
 export default function LogIn({ setUser, setLoggedIn }) {
   const navigate = useNavigate();
 
   const handleLogIn = async (email, password) => {
     try {
-      const resp = await fetch('http://localhost:4000/api/login', {
+      const resp = await fetch(`${API_URL}/api/login`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

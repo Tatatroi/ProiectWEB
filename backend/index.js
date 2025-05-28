@@ -5,8 +5,6 @@ if (process.env.NODE_ENV !== 'production') {
 const express = require("express");
 const cors = require("cors");
 const { Pool } = require("pg");
-const { use } = require("react");
-const axios = require('axios');
 
 const app = express();
 app.use(cors());
@@ -279,7 +277,7 @@ app.post("/api/login", async (req, res) => {
 
 
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 4000;
 
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
