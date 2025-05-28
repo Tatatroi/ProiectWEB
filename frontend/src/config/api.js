@@ -1,19 +1,13 @@
 // Determine API URL based on environment
-// const getApiUrl = () => {
-//   // TEMPORARILY always use Render for testing
-//   return 'https://tripplanner-appd.onrender.com';
-  
-//   // Comment out the logic for now
-//   // if (window.location.hostname === 'localhost' || 
-//   //     window.location.hostname === '127.0.0.1') {
-//   //   return 'http://localhost:4000';
-//   // }
-//   // return 'https://tripplanner-appd.onrender.com';
-// };
+const getApiUrl = () => {
+  if (window.location.hostname === 'localhost' || 
+      window.location.hostname === '127.0.0.1') {
+    return 'http://localhost:4000';
+  }
+  return 'https://tripplanner-appd.onrender.com';
+};
 
-// export const API_URL = getApiUrl();
-
-export const API_URL = 'https://tripplanner-appd.onrender.com';
+export const API_URL = getApiUrl();
 
 // API service with all your endpoints
 export const api = {

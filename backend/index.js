@@ -1,4 +1,3 @@
-// At the very top of index.js
 console.log('Starting server...');
 console.log('NODE_ENV:', process.env.NODE_ENV);
 console.log('DATABASE_URL exists:', !!process.env.DATABASE_URL);
@@ -24,6 +23,16 @@ const pool = new Pool({
     ? { rejectUnauthorized: false }
     : false
 });
+
+app.use(cors({
+  origin: [
+    'http://localhost:3000',
+    'http://localhost:4000',
+    'http://www.vaidos.com/mvaidos', 
+    'http://www.vaidos.com/mvaidos'
+  ],
+  credentials: true
+}));
 
 // Test database connection
 pool.connect((err, client, release) => {
