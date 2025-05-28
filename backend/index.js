@@ -1,3 +1,9 @@
+// At the very top of index.js
+console.log('Starting server...');
+console.log('NODE_ENV:', process.env.NODE_ENV);
+console.log('DATABASE_URL exists:', !!process.env.DATABASE_URL);
+console.log('PORT:', process.env.PORT);
+
 if (process.env.NODE_ENV !== 'production') {
   require('dotenv').config();
 }
