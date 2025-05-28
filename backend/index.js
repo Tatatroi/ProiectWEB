@@ -1,3 +1,7 @@
+if (process.env.NODE_ENV !== 'production') {
+  require('dotenv').config();
+}
+
 const express = require("express");
 const cors = require("cors");
 const { Pool } = require("pg");
@@ -8,13 +12,23 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// Completează cu datele tale:
+// Database configuration that works for both local and production
 const pool = new Pool({
-  user: "postgres", // ex: postgres
-  host: "localhost",
-  database: "TripPlanner", // ex: proiectweb
-  password: "password", // parola de la PostgreSQL
-  port: 5432, // portul standard PostgreSQL
+  connectionString: process.env.DATABASE_URL || 
+    `postgresql://postgres:password@localhost:5432/TripPlanner`,
+  ssl: process.env.NODE_ENV === 'production' 
+    ? { rejectUnauthorized: false }
+    : false
+});
+
+// Test database connection
+pool.connect((err, client, release) => {
+  if (err) {
+    console.error('Error connecting to the database:', err.stack);
+  } else {
+    console.log('Successfully connected to PostgreSQL database');
+    release();
+  }
 });
 
 // USERS API
@@ -265,7 +279,8 @@ app.post("/api/login", async (req, res) => {
 
 
 
-// Pornire server backend
-app.listen(4000, () => {
-  console.log("Backend Express rulează pe portul 4000");
+const PORT = process.env.PORT || 3000;
+
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
 });
