@@ -7,7 +7,7 @@
   /* Background: glassmorphism with ocean image */
   background:
     linear-gradient(120deg, rgba(33,150,243,0.4) 38%, rgba(33,150,243,0.1) 100%),
-    url('src/assets/img3Ocean.jpg') center/cover no-repeat;
+    url('../assets/img3Ocean.jpg') center/cover no-repeat;
   backdrop-filter: blur(6px) saturate(120%);
   -webkit-backdrop-filter: blur(6px) saturate(120%);
   padding-top: 64px;

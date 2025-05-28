@@ -1,5 +1,9 @@
 import { useState } from "react";
-import "../css/TripDetailModal.css"; // We'll simplify this CSS too
+import "../css/TripDetailModal.css";
+import img3Ocean from "../assets/img3Ocean.jpg";
+import img2Desert from "../assets/img2Desert.jpg";
+import img1Natura from "../assets/img1Natura.jpg";
+import defaultTravel from "../assets/defaultTravel.jpg";
 
 export default function TripDetailModal({ trip, onClose, onUpdate }) {
   const [isEditing, setIsEditing] = useState(false);
@@ -30,12 +34,12 @@ export default function TripDetailModal({ trip, onClose, onUpdate }) {
   const getBgImage = () => {
     const dest = trip.destination.toLowerCase();
     if (dest.includes("beach") || dest.includes("resort") || dest.includes("ocean") || dest.includes("sea")) 
-      return "url('/src/assets/img3Ocean.jpg')";
+      return `url(${img3Ocean})`;
     if (dest.includes("mountain") || dest.includes("hiking")) 
-      return "url('/src/assets/img1Natura.jpg')";
+      return `url(${img1Natura})`;
     if (dest.includes("desert")) 
-      return "url('/src/assets/img2Desert.jpg')";
-    return "url('/src/assets/defaultTravel.jpg')";
+      return `url(${img2Desert})`;
+    return `url(${defaultTravel})`;
   };
 
 // useEffect(() => {
@@ -60,8 +64,6 @@ export default function TripDetailModal({ trip, onClose, onUpdate }) {
   return (
     <div className="trip-modal-overlay" onClick={onClose}>
       <div className="trip-modal-content" onClick={e => e.stopPropagation()}>
-        {/* <button className="trip-modal-close" onClick={onClose}>×</button> */}
-        
         <div className="trip-modal-header" style={{ backgroundImage: getBgImage() }}>
           <button className="trip-modal-close" onClick={onClose}>×</button>
           <div className="trip-header-content">

@@ -1,6 +1,7 @@
 // src/components/AddTripModal.jsx
 import { useState } from "react";
 import "../css/TripDetailModal.css"; // We can reuse the same CSS
+import img1Natura from "../assets/img1Natura.jpg";
 
 export default function AddTripModal({ onClose, onAddTrip }) {
   const [newTrip, setNewTrip] = useState({
@@ -68,9 +69,8 @@ export default function AddTripModal({ onClose, onAddTrip }) {
   return (
     <div className="trip-modal-overlay" onClick={onClose}>
       <div className="trip-modal-content" onClick={e => e.stopPropagation()}>
+        <div className="trip-modal-header" style={{ backgroundImage: `url(${img1Natura})` }}>
         <button className="trip-modal-close" onClick={onClose}>×</button>
-        
-        <div className="trip-modal-header" style={{ backgroundImage: "url('/src/assets/img1Natura.jpg')" }}>
           <div className="trip-header-content">
             <h2>Add New Trip</h2>
           </div>
