@@ -1,6 +1,6 @@
 import React from "react";
 import { useState,useEffect } from "react";
-import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import Navbar from "./components/Navbar"; // asigură-te că importul e corect!
 import HomePage from "./pages/HomePage";
 import LogIn from "./pages/LogIn";
@@ -32,7 +32,7 @@ export default function App() {
 }, []);
 
   return (
-    <Router>
+    <>
       <Navbar loggedIn={loggedIn} onLogout={handleLogout} />
       <Routes>
         <Route path="/" element={<HomePage loggedIn={loggedIn} />} />
@@ -57,6 +57,6 @@ export default function App() {
           } 
         />
       </Routes>
-    </Router>
+    </>
   );
 }

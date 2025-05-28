@@ -1,5 +1,6 @@
 import "../css/SignUp.css";
 import { useState } from "react";
+import { Link } from 'react-router-dom';
 
 export default function LogIn({ onLogIn }) {
   // State
@@ -76,7 +77,7 @@ export default function LogIn({ onLogIn }) {
           </button>
         </form>
         <div className="buton-link mt-3">
-          <a href="/signup">Don't have an account yet?</a>
+          <Link to="/signup">Don't have an account yet?</Link>
         </div>
       </div>
     </div>

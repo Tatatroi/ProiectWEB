@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 export default function SignUpBox({ onSignUp }) {
   const [form, setForm] = useState({ firstName: '', lastName: '', email: '', password: '', confirm: '' });
@@ -117,7 +118,7 @@ export default function SignUpBox({ onSignUp }) {
         </button>
       </form>
       <div className="buton-link mt-3">
-        <a href="/login">Already have an account? Log in</a>
+        <Link to="/login">Already have an account? Log in</Link>
       </div>
     </div>
   );
