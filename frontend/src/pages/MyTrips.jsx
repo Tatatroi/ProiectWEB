@@ -123,7 +123,7 @@ const handleDeleteTrip = async (tripId) => {
   if (!window.confirm("Are you sure you want to delete this trip?")) return;
 
   try {
-    const response = await fetch(`${process.env.REACT_APP_API_URL}/api/trips/${tripId}`, {
+    const response = await fetch(`${API_URL}/api/trips/${tripId}`, {
       method: 'DELETE'
     });
 
@@ -150,22 +150,6 @@ const formatDate = (dateString) => {
     return dateString;
   }
 };
-
-
-
-
-
-
-// const handleFilterChange = (e) => {
-//   const selected = e.target.value;
-//   setFilterType(selected);
-
-//   if (selected === "All") {
-//     setFilteredTrips(allTrips);
-//   } else {
-//     setFilteredTrips(allTrips.filter(trip => trip.type === selected));
-//   }
-// };
 
 
 

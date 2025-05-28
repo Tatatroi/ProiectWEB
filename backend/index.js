@@ -120,27 +120,6 @@ app.get("/api/users/:id", async (req, res) => {
 
 // INSERT TRIP
 
-// app.get('/api/trips/user/:userId', async (req, res) => {
-//   const userId = req.params.userId;
-
-//   try {
-//     const result = await pool.query(
-//       `SELECT t.id, t.destination, t.date, t.description,
-//               t.user_id, u.first_name, u.last_name, u.email
-//        FROM trips t
-//        INNER JOIN users u ON t.user_id = u.id
-//        WHERE t.user_id = $1
-//        ORDER BY t.date DESC`,
-//       [userId]
-//     );
-
-//     res.status(200).json(result.rows);
-//   } catch (err) {
-//     console.error(`Eroare la obținerea călătoriilor pentru utilizatorul ${userId}:`, err);
-//     res.status(500).json({ mes: "Eroare internă de server" });
-//   }
-// });
-
 // Completează endpoint-ul POST pentru adăugarea unei călătorii
 app.post("/api/trips", async (req, res) => {
   const {
@@ -207,8 +186,8 @@ app.put("/api/trips/:id", async (req, res) => {
 
   try {
     const result = await pool.query(
-      "UPDATE trips SET destination = $1, date = $2, description = $3, budget = $5, accommodation = $6, transportation = $7, notes = $8 WHERE id = $4 RETURNING *",
-      [destination, date, description, id, budget, accommodation, transportation, notes]
+      "UPDATE trips SET destination = $1, date = $2, description = $3, budget = $4, accommodation = $5, transportation = $6, notes = $7 WHERE id = $8 RETURNING *",
+      [destination, date, description, budget, accommodation, transportation, notes, id]
     );
 
     if (result.rows.length === 0) {
