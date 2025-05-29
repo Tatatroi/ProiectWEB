@@ -1,6 +1,6 @@
 import React from "react";
 import "../css/AboutPage.css";
-import avion from "../assets/avion.png";
+import travel from "../assets/travel.avif";
 import easyIntuitive from "../assets/easy-list.jpg"
 import feature from "../assets/feature.jpg"
 
@@ -18,7 +18,7 @@ export default function AboutPage() {
       </section>
       <section className="about-features">
         <div className="feature-box">
-          <img src={avion} alt="Easy list management" />
+          <img src={travel} alt="Easy list management" />
           <div>
             <h4>Create and Explore Trips Effortlessly</h4>
             <p>

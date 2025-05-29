@@ -12,7 +12,7 @@ export default function Navbar({ loggedIn, onLogout, theme, setTheme }) {
     <nav className="navbar navbar-expand-lg navbar-dark bg-primary shadow">
       <div className="container-fluid">
         <Link className="navbar-brand fw-bold" to="/">
-          TripPlanner
+          Home
         </Link>
         <div className="d-flex align-items-center">
             <button

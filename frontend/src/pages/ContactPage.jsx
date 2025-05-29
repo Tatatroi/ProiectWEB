@@ -10,7 +10,7 @@ export default function ContactPage() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    alert("Email sent! (funcționalitatea de trimitere nu e implementată aici)");
+    alert("Email sent! (funcționalitatea de trimitere nu e implementată inca)");
     setForm({ email: "", message: "" });
   };
 
@@ -20,8 +20,8 @@ export default function ContactPage() {
       <div className="contact-content">
         <div className="contact-info">
           <h3>Date de contact</h3>
-          <p><strong>Telephone:</strong> <a href="tel:+40213123123">021 312 31 23</a></p>
-          <p><strong>Address:</strong> Str. Exemplu, Nr. 15, București, România</p>
+          <p><strong>Telephone:</strong> <a href="tel:+40213123123">+40 722 333 444</a></p>
+          <p><strong>Address:</strong> Str. Exemplu, Nr. 15, Cluj-Napoca, Cluj, România</p>
           <p><strong>Email:</strong> <a href="mailto:contact@tripplanner.com">contact@tripplanner.com</a></p>
           <div className="map-container">
             <iframe
