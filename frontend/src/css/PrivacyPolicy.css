@@ -8,6 +8,7 @@
   line-height: 1.68;
   color: #22335a;
   font-size: 1.06rem;
+  transition: all 0.3s ease;
 }
 
 .privacy-page h2 {
@@ -41,6 +42,7 @@
   word-break: break-all;
   text-decoration: none;
 }
+
 .privacy-page a:hover {
   text-decoration: underline;
 }
@@ -54,6 +56,76 @@
   color: #156cf7;
 }
 
+/* Dark Theme Styles */
+[data-bs-theme="dark"] .privacy-page {
+  background: #1a1d23;
+  box-shadow: 0 2px 9px rgba(0,0,0,0.3);
+  color: #e2e8f0;
+}
+
+[data-bs-theme="dark"] .privacy-page h2 {
+  color: #4a9eff;
+}
+
+[data-bs-theme="dark"] .privacy-page h3 {
+  color: #6bb6ff;
+}
+
+[data-bs-theme="dark"] .privacy-page li {
+  color: #cbd5e1;
+}
+
+[data-bs-theme="dark"] .privacy-page a {
+  color: #4a9eff;
+}
+
+[data-bs-theme="dark"] .privacy-page a:hover {
+  color: #6bb6ff;
+}
+
+[data-bs-theme="dark"] .privacy-page b {
+  color: #4a9eff;
+}
+
+/* Alternative dark mode selectors */
+.dark-mode .privacy-page,
+body.dark .privacy-page {
+  background: #1a1d23;
+  box-shadow: 0 2px 9px rgba(0,0,0,0.3);
+  color: #e2e8f0;
+}
+
+.dark-mode .privacy-page h2,
+body.dark .privacy-page h2 {
+  color: #4a9eff;
+}
+
+.dark-mode .privacy-page h3,
+body.dark .privacy-page h3 {
+  color: #6bb6ff;
+}
+
+.dark-mode .privacy-page li,
+body.dark .privacy-page li {
+  color: #cbd5e1;
+}
+
+.dark-mode .privacy-page a,
+body.dark .privacy-page a {
+  color: #4a9eff;
+}
+
+.dark-mode .privacy-page a:hover,
+body.dark .privacy-page a:hover {
+  color: #6bb6ff;
+}
+
+.dark-mode .privacy-page b,
+body.dark .privacy-page b {
+  color: #4a9eff;
+}
+
+/* Responsive */
 @media (max-width: 650px) {
   .privacy-page {
     padding: 20px 6vw 20px 6vw;

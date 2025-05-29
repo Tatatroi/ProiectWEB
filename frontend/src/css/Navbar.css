@@ -23,9 +23,13 @@ body.dark .footer {
 body.dark .about-page,
 body.dark .contact-page,
 body.dark .main-content,
-body.dark .card, 
+body.dark .card {
+    background: #182131;
+    color: #dde5f4;
+}
 body.dark .screen {
-  background: #182131;
+  background: url('../assets/backgroundDarkTheme.jpg') no-repeat center center;
+  background-size: cover;
   color: #dde5f4;
 }
 
