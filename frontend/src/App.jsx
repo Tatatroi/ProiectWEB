@@ -43,39 +43,41 @@ export default function App() {
   }, []);
 
   return (
-    <div className="app-container">
+    <div id="root">
       <Navbar
         loggedIn={loggedIn}
         onLogout={handleLogout}
         theme={theme}
         setTheme={setTheme}
       />
-      <Routes>
-        <Route path="/" element={<HomePage loggedIn={loggedIn} />} />
-        <Route
-          path="/login"
-          element={
-            loggedIn ? (
-              <Navigate to="/mytrips" />
-            ) : (
-              <LogIn setUser={setUser} setLoggedIn={setLoggedIn} />
-            )
-          }
-        />
-        <Route
-          path="/signup"
-          element={loggedIn ? <Navigate to="/mytrips" /> : <SignUp />}
-        />
-        <Route
-          path="/mytrips"
-          element={
-            loggedIn ? <MyTrips user={user} /> : <Navigate to="/login" />
-          }
-        />
-        <Route path="/contact" element={<ContactPage />} />
-        <Route path="/about" element={<AboutPage />} />
-        <Route path="/privacy" element={<Privacy />} />
-      </Routes>
+      <main>
+        <Routes>
+          <Route path="/" element={<HomePage loggedIn={loggedIn} />} />
+          <Route
+            path="/login"
+            element={
+              loggedIn ? (
+                <Navigate to="/mytrips" />
+              ) : (
+                <LogIn setUser={setUser} setLoggedIn={setLoggedIn} />
+              )
+            }
+          />
+          <Route
+            path="/signup"
+            element={loggedIn ? <Navigate to="/mytrips" /> : <SignUp />}
+          />
+          <Route
+            path="/mytrips"
+            element={
+              loggedIn ? <MyTrips user={user} /> : <Navigate to="/login" />
+            }
+          />
+          <Route path="/contact" element={<ContactPage />} />
+          <Route path="/about" element={<AboutPage />} />
+          <Route path="/privacy" element={<Privacy />} />
+        </Routes>
+      </main>
       <Footer />
     </div>
   );
