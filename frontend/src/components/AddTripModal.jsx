@@ -1,6 +1,5 @@
-// src/components/AddTripModal.jsx
 import { useState } from "react";
-import "../css/TripDetailModal.css"; // We can reuse the same CSS
+import "../css/TripDetailModal.css";
 import img1Natura from "../assets/img1Natura.jpg";
 
 export default function AddTripModal({ onClose, onAddTrip }) {
@@ -58,7 +57,11 @@ export default function AddTripModal({ onClose, onAddTrip }) {
       // Generate a unique ID for the new trip
       const tripToAdd = {
         ...newTrip,
-        id: Date.now() // Simple way to generate a unique ID
+        id: Date.now(), // Simple way to generate a unique ID
+        budget: newTrip.budget.trim() || "-",
+        accommodation: newTrip.accommodation.trim() || "-",
+        transportation: newTrip.transportation.trim() || "-",
+        notes: newTrip.notes.trim() || "-"
       };
       
       onAddTrip(tripToAdd);
@@ -120,7 +123,7 @@ export default function AddTripModal({ onClose, onAddTrip }) {
             </div>
             
             <div className="form-group mb-3">
-              <label htmlFor="budget">Budget</label>
+              <label htmlFor="budget">Budget <span className="text-muted">(optional)</span></label>
               <input
                 type="text"
                 id="budget"
@@ -133,7 +136,7 @@ export default function AddTripModal({ onClose, onAddTrip }) {
             </div>
             
             <div className="form-group mb-3">
-              <label htmlFor="accommodation">Accommodation</label>
+              <label htmlFor="accommodation">Accommodation <span className="text-muted">(optional)</span></label>
               <input
                 type="text"
                 id="accommodation"
@@ -146,7 +149,7 @@ export default function AddTripModal({ onClose, onAddTrip }) {
             </div>
             
             <div className="form-group mb-3">
-              <label htmlFor="transportation">Transportation</label>
+              <label htmlFor="transportation">Transportation <span className="text-muted">(optional)</span></label>
               <input
                 type="text"
                 id="transportation"
@@ -159,7 +162,7 @@ export default function AddTripModal({ onClose, onAddTrip }) {
             </div>
             
             <div className="form-group mb-3">
-              <label htmlFor="notes">Notes</label>
+              <label htmlFor="notes">Notes <span className="text-muted">(optional)</span></label>
               <textarea
                 id="notes"
                 name="notes"
