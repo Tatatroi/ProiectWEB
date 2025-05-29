@@ -1,4 +1,4 @@
-import React from "react";
+import "../css/QuoteBox.css"; // Import the CSS file
 
 const QUOTES = [
   "The world is a book and those who do not travel read only one page.",
@@ -9,9 +9,9 @@ const QUOTES = [
 export default function QuoteBox() {
   const quote = QUOTES[Math.floor(Math.random() * QUOTES.length)];
   return (
-    <div className="border rounded shadow p-4 bg-white text-center">
+    <div className="quote-box border rounded shadow p-4 bg-white text-center">
       <blockquote className="blockquote mb-0">
-        <p className="lead">"{quote}"</p>
+        <p className="lead quote-text text-dark">{quote}</p>
       </blockquote>
     </div>
   );
