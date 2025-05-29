@@ -1,0 +1,52 @@
+.footer {
+  background: #156cf7;
+  color: #fff;
+  padding: 24px 0 18px 0;
+  box-shadow: 0 -2px 8px rgba(21,108,247,0.10); /* shadow subtil sus */
+  position: relative;
+  width: 100%;
+  /* margin-top: 60px; */
+}
+
+.footer-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1080px;
+  margin: 0 auto;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 0 24px;
+  font-size: 15px;
+}
+
+.footer-center a,
+.footer-right a {
+  color: #fff;
+  text-decoration: none;
+  margin: 0 10px;
+  transition: color 0.2s;
+}
+
+.footer-center a:hover,
+.footer-right a:hover {
+  color: #bee3ff;
+}
+
+/* Social icons (folosește FontAwesome sau altele) */
+.footer-right i {
+  font-size: 19px;
+  margin-right: 2px;
+}
+
+/* Responsive */
+@media (max-width: 700px) {
+  .footer-content {
+    flex-direction: column;
+    text-align: center;
+    gap: 10px;
+  }
+  .footer-right {
+    margin-top: 10px;
+  }
+}

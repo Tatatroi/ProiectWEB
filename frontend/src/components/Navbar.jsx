@@ -1,7 +1,12 @@
 import { Link, useNavigate } from "react-router-dom";
+import "../css/Navbar.css"
 
-export default function Navbar({ loggedIn, onLogout }) {
+export default function Navbar({ loggedIn, onLogout, theme, setTheme }) {
   const navigate = useNavigate();
+
+   function toggleTheme() {
+    setTheme(theme === "light" ? "dark" : "light");
+  }
 
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-primary shadow">
@@ -10,6 +15,13 @@ export default function Navbar({ loggedIn, onLogout }) {
           TripPlanner
         </Link>
         <div className="d-flex align-items-center">
+            <button
+          className="theme-toggle-btn"
+          onClick={toggleTheme}
+          title={`Activate ${theme === "light" ? "dark" : "light"} mode`}
+        >
+          {theme === "dark" ? "☀️" : "🌙"}
+        </button>
           {loggedIn ? (
             <>
               <button

@@ -1,0 +1,160 @@
+body {
+  background: #f4fafe;
+  color: #102538;
+  transition: background 0.2s, color 0.2s;
+}
+
+body.dark {
+  background: #141b27;
+  color: #e0e6ee;
+}
+
+/* Navbar dark */
+body.dark .navbar {
+  background: #0d121b;
+  color: #e0e6ee;
+}
+
+/* Footer și carduri dark (exemple): */
+body.dark .footer {
+  background: #1a2233;
+  color: #bfcbe7;
+}
+body.dark .about-page,
+body.dark .contact-page,
+body.dark .main-content,
+body.dark .card, 
+body.dark .screen {
+  background: #182131;
+  color: #dde5f4;
+}
+
+
+
+.theme-toggle-btn {
+  background: none;
+  border: none;
+  font-size: 1.3rem;
+  margin-left: 15px;
+  cursor: pointer;
+  transition: filter 0.2s;
+}
+.theme-toggle-btn:hover {
+  filter: brightness(1.2) drop-shadow(0 1px 6px #156cf744);
+}
+
+
+/* // componente la care schimb culoarea */
+body.dark .card-footer{
+    background: #181d2c !important;
+    color: #e2eaff !important;
+}
+
+body.dark .card{
+    background-color: #22203a !important;
+    box-shadow: 0 4px 16px #8f70ff22 !important;
+    border: 1.5px solid #8f70ffa8 !important;
+}
+
+body.dark .search-input {
+  background-color: #232b3a !important;
+  color: #fff;
+  border: 1.5px solid #27d6ff44;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px #27d6ff22;
+  transition: border 0.2s, box-shadow 0.2s;
+}
+
+body.dark .search-input:focus {
+  border-color: #27d6ff;
+  outline: none;
+  box-shadow: 0 2px 16px #27d6ff55;
+}
+
+body.dark .search-input,
+.filter-container select {
+  color: #f4f8ff;
+}
+
+
+body.dark .filter-container label {
+  color: #7fd7ff;
+  margin-right: 8px;
+  font-weight: 500;
+}
+
+ body.dark .filter-container select {
+  background: #232b3a;
+  color: #f4f8ff;
+  border: 1.5px solid #27d6ff44;
+  border-radius: 8px;
+  padding: 6px 28px 6px 12px;
+  box-shadow: 0 2px 8px #27d6ff22;
+  font-size: 1rem;
+  transition: border 0.2s, box-shadow 0.2s;
+}
+
+body.dark .filter-container select:focus {
+  border-color: #27d6ff;
+  outline: none;
+  box-shadow: 0 2px 16px #27d6ff55;
+}
+
+/* Pentru opțiunile din select (cross-browser) */
+body.dark .filter-container option {
+  background: #202534;
+  color: #f4f8ff;
+}
+
+body.dark .navbar{
+    background: linear-gradient(90deg, #2b2141 0%, #6a4cff 100%);
+}
+
+body.dark .footer{
+    background: linear-gradient(90deg,#6a4cff  0%,  #2b2141 100%);
+}
+
+body.dark .WelcomeBlue{
+    color: rgb(79, 44, 155) !important;
+}
+
+body.dark .display-4{
+    color: #6a4cff !important;
+}
+
+body.dark .text-muted{
+    color: white !important;
+}
+
+body.dark .detalii{
+    color: #f5f5f5;
+}
+
+body.dark .trip-modal-body {
+    background: linear-gradient(135deg, #2b2141 50%, #483e68 100%) !important;       /* sau #23203a */
+    color: #00050d !important;             /* text alburiu, nu pur alb */
+}
+
+body.dark .culoareFundalNegru{
+    color: #ffffff !important;
+}
+
+body.dark .form-control{
+    background-color: #bfcbe7;
+}
+
+body.dark .form-control > h4{
+    color: #ffffff !important;;
+}
+
+body.dark .contact-form{
+    background: linear-gradient(90deg, #2b2141 0%, #27109a 100%); 
+}
+
+body.dark .contact-form > h3{
+    color: #bfcbe7;
+}
+
+body.dark .carousel-caption-title{
+    color: #00050d;
+}
