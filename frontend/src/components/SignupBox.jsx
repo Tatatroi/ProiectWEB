@@ -1,15 +1,26 @@
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function SignUpBox({ onSignUp }) {
-  const [form, setForm] = useState({ firstName: '', lastName: '', email: '', password: '', confirm: '' });
+  const navigate = useNavigate();
+
+  const [form, setForm] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    password: "",
+    confirm: "",
+  });
+
   const [touched, setTouched] = useState({});
   const [errors, setErrors] = useState({});
   const [submitting, setSubmitting] = useState(false);
+  const [successMessage, setSuccessMessage] = useState("");
 
-  // Simple validators
   function validate() {
     const errs = {};
+    if (!form.firstName.trim()) errs.firstName = "First name is required";
+    if (!form.lastName.trim()) errs.lastName = "Last name is required";
     if (!/\S+@\S+\.\S+/.test(form.email)) errs.email = "Invalid email address";
     if (form.password.length < 6) errs.password = "At least 6 characters";
     if (form.password !== form.confirm) errs.confirm = "Passwords do not match";
@@ -18,7 +29,7 @@ export default function SignUpBox({ onSignUp }) {
 
   function handleChange(e) {
     setForm({ ...form, [e.target.name]: e.target.value });
-    setErrors({...errors, [e.target.name]: undefined});
+    setErrors({ ...errors, [e.target.name]: undefined });
   }
 
   function handleBlur(e) {
@@ -30,16 +41,44 @@ export default function SignUpBox({ onSignUp }) {
     e.preventDefault();
     const errs = validate();
     setErrors(errs);
-    setTouched({ firstName:true, lastName:true, email: true, password: true, confirm: true });
+    setTouched({
+      firstName: true,
+      lastName: true,
+      email: true,
+      password: true,
+      confirm: true,
+    });
+
     if (Object.keys(errs).length === 0) {
       setSubmitting(true);
+      try {
+        await onSignUp(
+          form.firstName,
+          form.lastName,
+          form.email,
+          form.password
+        );
 
-      // console.log(form.firstName)
-      // console.log(form.lastName)
-      // console.log(form.email)
-      // console.log(form.password)
+        setForm({
+          firstName: "",
+          lastName: "",
+          email: "",
+          password: "",
+          confirm: "",
+        });
+        setTouched({});
+        setErrors({});
+        setSuccessMessage(
+          "Account created successfully! Redirecting to login..."
+        );
 
-      await onSignUp(form.firstName, form.lastName, form.email, form.password);
+        setTimeout(() => {
+          setSuccessMessage("");
+          navigate("/login");
+        }, 3000);
+      } catch (err) {
+        alert("Something went wrong while signing up.");
+      }
       setSubmitting(false);
     }
   }
@@ -47,10 +86,19 @@ export default function SignUpBox({ onSignUp }) {
   return (
     <div className="box-signup">
       <div className="title-signup">Sign up</div>
-      <form onSubmit={handleSubmit} style={{width: '104%'}}>
+
+      {successMessage && (
+        <div className="alert alert-success" role="alert">
+          {successMessage}
+        </div>
+      )}
+
+      <form onSubmit={handleSubmit} style={{ width: "104%" }}>
         <input
           name="firstName"
-          className={`text-box${errors.firstName && touched.firstName ? " input-error" : ""}`}
+          className={`text-box${
+            errors.firstName && touched.firstName ? " input-error" : ""
+          }`}
           type="text"
           placeholder="First Name"
           value={form.firstName}
@@ -60,9 +108,12 @@ export default function SignUpBox({ onSignUp }) {
         {errors.firstName && touched.firstName && (
           <div className="error-message">{errors.firstName}</div>
         )}
+
         <input
           name="lastName"
-          className={`text-box${errors.lastName && touched.lastName ? " input-error" : ""}`}
+          className={`text-box${
+            errors.lastName && touched.lastName ? " input-error" : ""
+          }`}
           type="text"
           placeholder="Last Name"
           value={form.lastName}
@@ -74,7 +125,9 @@ export default function SignUpBox({ onSignUp }) {
         )}
         <input
           name="email"
-          className={`text-box${errors.email && touched.email ? " input-error" : ""}`}
+          className={`text-box${
+            errors.email && touched.email ? " input-error" : ""
+          }`}
           type="email"
           placeholder="Email"
           value={form.email}
@@ -87,7 +140,9 @@ export default function SignUpBox({ onSignUp }) {
 
         <input
           name="password"
-          className={`text-box${errors.password && touched.password ? " input-error" : ""}`}
+          className={`text-box${
+            errors.password && touched.password ? " input-error" : ""
+          }`}
           type="password"
           placeholder="Password (min 6 characters)"
           autoComplete="new-password"
@@ -101,7 +156,9 @@ export default function SignUpBox({ onSignUp }) {
 
         <input
           name="confirm"
-          className={`text-box${errors.confirm && touched.confirm ? " input-error" : ""}`}
+          className={`text-box${
+            errors.confirm && touched.confirm ? " input-error" : ""
+          }`}
           type="password"
           placeholder="Confirm Password"
           autoComplete="new-password"
